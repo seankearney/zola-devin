@@ -4,10 +4,11 @@
 - The sample content for the theme is in the `content/` directory
 - Any/all JavaScript should be Vanilla JS
 - We should use "Tailwind CSS" for any/all style and theme customizations
+- This site should be viewable on all modern desktop and mobile browsers
 
 ## Zola
 
-- Enable search index so we can use `elasticlunr`. Titles and content should be searchable.
+- No searching yet.
 - Single language (English)
 - `taxonomies` should be configured for "Tags" only
 - Blog posts are created so that content can be colocated in a directory
@@ -46,6 +47,12 @@
 
 ## Description of Zola Theme Templates
 
+### /archive
+
+- The archive page should list all years (descending) and then a list of all post titles in that year.
+- No description or summary on this page.
+- post counts per year are not required.
+
 ### `index.html`
 
 - The default document of the site. (i.e. the home page).
@@ -79,6 +86,14 @@
 - Should list all blog posts in that tag
 
 #### Comments Structure
+
+- id: A monotonically increasing number. Higher numbers are more recent than lower numbers.
+- date: the date the comment was made
+- name: The name of the comment author
+- avatar: a URI to an image for this user. This URI may be from various services. The template should render the image regardless of where it comes from.
+- message: single, or multiline, text of the comment.
+
+Assume the comments are validated prior to being created.
 
 ```yml
 id: 635428042550000000
