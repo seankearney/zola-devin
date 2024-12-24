@@ -7,7 +7,7 @@
 
 ## Zola
 
-- Enable search index
+- Enable search index so we can use `elasticlunr`. Titles and content should be searchable.
 - Single language (English)
 - `taxonomies` should be configured for "Tags" only
 - Blog posts are created so that content can be colocated in a directory
@@ -29,12 +29,20 @@
    4. Social Network Links for each configured social network, show the social network icon and link to uri.
    5. rss icon linking to `/rss.xml`
 
-## Theme Options
+## Zola Theme Options
 
 - Blog Owner Name: The name of the person who blogs on this site
 - Blog Owner Image: The path/name of static image asset to be used for the blog owner
 - Blog Owner Description: Text used on the homepage
-- Social Links: an array of social network and uri
+- Social Links: an array of social network and uri. 
+  - This list should not be finite. 
+  - Ideally, the configured settings would allow for the name of the social nework to directly reference and render icons as provided from TailwindCSS
+  - Default enabled networks should be GitHub, StackOverflow, Twitter, LinkedIn
+
+## Tailwind Theme
+
+- The theme should support dark mode.
+- Color scheme and fonts can be default
 
 ## Description of Zola Theme Templates
 
