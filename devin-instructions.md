@@ -11,6 +11,7 @@
 - Enable the search index for use with `elasticlunr`. 
 - Single language (English)
 - `taxonomies` should be configured for "Tags" only
+- Enable an RSS 2.0 feed (`/rss.xml`)
 - Blog posts are created so that content (images, comments, etc...) can be colocated in a directory
 
 ## Description of Layout Elements
@@ -78,6 +79,7 @@
 ### `post-list.html`
 
 - A page that lists out all blog posts in its section
+- The page should list the article title, any configured `description` in the post's front matter and the date of the post. If there isn't a configured `description` in the front matter, then it should render the page's summary.
 - The page should use Zola pagination. 10 posts per page. the `paginate_path` should be "page"
 
 ### `tags/list.html`
