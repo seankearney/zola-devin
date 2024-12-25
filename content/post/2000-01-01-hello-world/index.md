@@ -13,6 +13,8 @@ tags = ["welcome", "introduction"]
 
 This is my first blog post where I'll be sharing my thoughts, experiences, and knowledge about software development and technology.
 
+<!-- more -->
+
 ## What to Expect
 
 In this blog, you'll find:

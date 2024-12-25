@@ -11,7 +11,7 @@
 - Enable the search index for use with `elasticlunr`. 
 - Single language (English)
 - `taxonomies` should be configured for "Tags" only
-- Blog posts are created so that content can be colocated in a directory
+- Blog posts are created so that content (images, comments, etc...) can be colocated in a directory
 
 ## Description of Layout Elements
 
@@ -26,10 +26,11 @@
       1. Should show results in an overlay that appears just under the search box.
       2. The search results should happen real-time and with Enter/button press.
       3. Highlighting terms in search result isn't required.
+   4. Light/Dark theme toggle
 2. Footer
    1. Copyright (year) [Blog Owner Name]
-   2. Design by Devin.ai
-   3. Powered by Zola
+   2. Powered by Zola with link to https://www.getzola.org/
+   3. Theme by Devin.ai
    4. Social Network Links for each configured social network, show the social network icon and link to uri.
    5. rss icon linking to `/rss.xml`
 
@@ -45,7 +46,7 @@
 
 ## Tailwind Theme
 
-- The theme should support dark mode.
+- The theme should support light and dark mode.
 - Color scheme and fonts can be default
 
 ## Description of Zola Theme Templates
