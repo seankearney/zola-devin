@@ -8,7 +8,7 @@
 
 ## Zola
 
-- No searching yet.
+- Enable the search index for use with `elasticlunr`. 
 - Single language (English)
 - `taxonomies` should be configured for "Tags" only
 - Blog posts are created so that content can be colocated in a directory
@@ -23,6 +23,9 @@
       3. Categories (/tags)
       4. Archive (/archive)
    3. Search box
+      1. Should show results in an overlay that appears just under the search box.
+      2. The search results should happen real-time and with Enter/button press.
+      3. Highlighting terms in search result isn't required.
 2. Footer
    1. Copyright (year) [Blog Owner Name]
    2. Design by Devin.ai
