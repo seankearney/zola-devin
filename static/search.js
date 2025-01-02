@@ -6,30 +6,38 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeButton = document.querySelector('.close-search');
 
     // Load the search index
-    fetch('/search_index.en.js')
+    const searchIndexPath = document.querySelector('meta[name="search-index"]').getAttribute('content');
+    fetch(searchIndexPath)
         .then(response => response.text())
         .then(data => {
             // Remove the "window.searchIndex = " part and parse the JSON
             const jsonStr = data.replace('window.searchIndex = ', '').replace(/;$/, '');
-            searchIndex = JSON.parse(jsonStr);
+            const rawData = JSON.parse(jsonStr);
             
-            // Initialize lunr with the search index
-            searchIndex = lunr.Index.load(searchIndex);
+            try {
+                // Load the serialized index directly
+                searchIndex = lunr.Index.load(rawData);
+            } catch (e) {
+                console.warn('Version mismatch warning:', e);
+                // Continue using the index anyway as lunr is backward compatible
+                searchIndex = lunr.Index.load(rawData);
+            }
         })
         .catch(error => {
             console.error('Error loading search index:', error);
+            resultsContainer.innerHTML = '<p class="p-4 text-red-500">Failed to load search index</p>';
         });
 
     // Show overlay when focusing on search input
     searchInput.addEventListener('focus', () => {
-        searchOverlay.classList.add('active');
-        searchOverlay.style.display = 'flex';
+        searchOverlay.classList.remove('hidden');
+        searchOverlay.classList.add('flex');
     });
 
     // Close overlay when clicking close button
     closeButton.addEventListener('click', () => {
-        searchOverlay.classList.remove('active');
-        searchOverlay.style.display = 'none';
+        searchOverlay.classList.add('hidden');
+        searchOverlay.classList.remove('flex');
         searchInput.value = '';
         resultsContainer.innerHTML = '';
     });
@@ -37,8 +45,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Close overlay when clicking outside
     searchOverlay.addEventListener('click', (e) => {
         if (e.target === searchOverlay) {
-            searchOverlay.classList.remove('active');
-            searchOverlay.style.display = 'none';
+            searchOverlay.classList.add('hidden');
+            searchOverlay.classList.remove('flex');
             searchInput.value = '';
             resultsContainer.innerHTML = '';
         }
@@ -73,8 +81,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             const resultsHtml = results.map(result => `
-                <a href="/posts/${result.ref}" class="block p-4 hover:bg-gray-50 dark:hover:bg-gray-800">
-                    <h3 class="text-lg font-semibold text-[var(--text-primary)]">${result.ref}</h3>
+                <a href="${result.ref}" class="block p-4 hover:bg-gray-50 dark:hover:bg-gray-800">
+                    <h3 class="text-lg font-semibold text-[var(--text-primary)]">${result.ref.split('/').pop()}</h3>
                     <p class="text-sm text-gray-600 dark:text-gray-400">Score: ${result.score.toFixed(2)}</p>
                 </a>
             `).join('');
