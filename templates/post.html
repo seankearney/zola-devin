@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-8">
+    <article class="mb-16">
+        <header class="mb-8">
+            <h1 class="text-4xl font-bold text-[var(--text-primary)] mb-4">{{ page.title }}</h1>
+            <div class="text-gray-500 dark:text-gray-400">
+                <time datetime="{{ page.date }}">{{ page.date | date(format="%B %d, %Y") }}</time>
+                {% if page.taxonomies.tags %}
+                <span class="mx-2">•</span>
+                <span>
+                    {% for tag in page.taxonomies.tags %}
+                    <a href="{{ get_taxonomy_url(kind='tags', name=tag) }}" 
+                       class="text-blue-600 dark:text-blue-400 hover:underline">{{ tag }}</a>
+                    {% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </span>
+                {% endif %}
+            </div>
+        </header>
+
+        <div class="prose dark:prose-invert max-w-none">
+            {{ page.content | safe }}
+        </div>
+    </article>
+
+    {% if page.lower or page.higher %}
+    <nav class="flex justify-between items-center py-8 border-t border-gray-200 dark:border-gray-700">
+        {% if page.lower %}
+        <a href="{{ page.lower.permalink }}" class="flex items-center text-blue-600 dark:text-blue-400 hover:underline">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            {{ page.lower.title }}
+        </a>
+        {% else %}
+        <div></div>
+        {% endif %}
+
+        {% if page.higher %}
+        <a href="{{ page.higher.permalink }}" class="flex items-center text-blue-600 dark:text-blue-400 hover:underline">
+            {{ page.higher.title }}
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </a>
+        {% else %}
+        <div></div>
+        {% endif %}
+    </nav>
+    {% endif %}
+
+    {% set page_dir = page.relative_path | trim_start_matches(pat="post/") | trim_end_matches(pat="/index.md") %}
+    {% set comments = load_data(path="content/post/" ~ page_dir ~ "/comment-*.yml", required=false) %}
+    
+    {% if comments %}
+    <section class="mt-16">
+        <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-8">Comments</h2>
+        <div class="space-y-8">
+            {% for comment in comments | sort(attribute="date") | reverse %}
+            <div class="flex space-x-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                <div class="flex-shrink-0">
+                    <img src="{{ comment.avatar }}" 
+                         alt="Avatar of {{ comment.name }}"
+                         class="w-12 h-12 rounded-full"
+                         onerror="this.src='https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp'">
+                </div>
+                <div class="flex-grow">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-bold text-[var(--text-primary)]">{{ comment.name }}</h3>
+                        <time datetime="{{ comment.date }}" 
+                              class="text-sm text-gray-500 dark:text-gray-400">
+                            {{ comment.date | date(format="%B %d, %Y") }}
+                        </time>
+                    </div>
+                    <div class="prose dark:prose-invert max-w-none text-sm">
+                        {{ comment.message | markdown | safe }}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+</div>
+{% endblock content %}

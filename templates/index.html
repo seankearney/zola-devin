@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4 py-8">
+    <header class="mb-12">
+        <h1 class="text-4xl font-bold text-[var(--text-primary)] mb-4">{{ section.title }}</h1>
+        {% if section.description %}
+        <p class="text-xl text-gray-600 dark:text-gray-400">{{ section.description }}</p>
+        {% endif %}
+    </header>
+
+    <div class="space-y-12">
+        {% for page in section.pages %}
+        <article class="border-b border-gray-200 dark:border-gray-700 pb-8 last:border-0">
+            <h2 class="text-2xl font-bold mb-4">
+                <a href="{{ page.permalink }}" class="text-[var(--text-primary)] hover:text-blue-600 dark:hover:text-blue-400">
+                    {{ page.title }}
+                </a>
+            </h2>
+            {% if page.description %}
+            <p class="text-gray-600 dark:text-gray-400 mb-4">{{ page.description }}</p>
+            {% endif %}
+            <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                <time datetime="{{ page.date }}">{{ page.date | date(format="%B %d, %Y") }}</time>
+                {% if page.taxonomies.tags %}
+                <span class="mx-2">•</span>
+                <div class="flex items-center space-x-2">
+                    {% for tag in page.taxonomies.tags %}
+                    <a href="{{ get_taxonomy_url(kind='tags', name=tag) }}" 
+                       class="text-blue-600 dark:text-blue-400 hover:underline">{{ tag }}</a>
+                    {% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+
+    {% if paginator %}
+    <nav class="mt-12 flex justify-between items-center">
+        {% if paginator.previous %}
+        <a href="{{ paginator.previous }}" class="text-blue-600 dark:text-blue-400 hover:underline">&larr; Previous</a>
+        {% else %}
+        <span class="text-gray-400 dark:text-gray-600">&larr; Previous</span>
+        {% endif %}
+
+        <span class="text-[var(--text-primary)]">Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</span>
+
+        {% if paginator.next %}
+        <a href="{{ paginator.next }}" class="text-blue-600 dark:text-blue-400 hover:underline">Next &rarr;</a>
+        {% else %}
+        <span class="text-gray-400 dark:text-gray-600">Next &rarr;</span>
+        {% endif %}
+    </nav>
+    {% endif %}
+</div>
+{% endblock content %}

@@ -1,0 +1,47 @@
+# The URL the site will be built for
+base_url = "http://127.0.0.1:1111"
+
+# Whether to automatically compile all Sass files in the sass directory
+compile_sass = true
+
+# Whether to build a search index to be used later on by a JavaScript library
+build_search_index = true
+
+# The site title and description; used in feeds by default
+title = "My Blog"
+description = "A simple blog built with Zola"
+
+# The default language; used in feeds
+default_language = "en"
+
+# Feed configuration
+generate_feed = true
+feed_filename = "rss.xml"
+
+# The taxonomies to be rendered for the site
+taxonomies = [
+    {name = "tags", feed = true},
+]
+
+[markdown]
+# Whether to do syntax highlighting
+highlight_code = true
+highlight_theme = "base16-ocean-dark"
+
+[extra]
+# Social media links
+social_links = [
+    { name = "GitHub", url = "https://github.com/digitaldjpool" },
+    { name = "Twitter", url = "https://twitter.com/digitaldjpool" },
+    { name = "LinkedIn", url = "https://linkedin.com/company/digitaldjpool" },
+    { name = "StackOverflow", url = "https://stackoverflow.com/users/digitaldjpool" }
+]
+
+# Number of posts to show per page
+paginate_by = 10
+
+# Section configuration
+[sections]
+# Section path relative to content directory
+post = { paginate_by = 10, sort_by = "date", sort_order = "desc" }
+archive = { paginate_by = 10, sort_by = "date", sort_order = "desc" }
