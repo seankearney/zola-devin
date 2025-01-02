@@ -1,106 +1,105 @@
-# The Goal
+## Goal
+- Create a theme for [Zola](https://www.getzola.org/)
+- The theme should be named "zola-devin"
+- Use Vanilla JS for JavaScript
+- Use "Tailwind CSS" for style and theme customizations
+- Site should be viewable on all modern desktop and mobile browsers
+- Update the `/content/about.md` with an overview of you Devin!
+- Update `readme.md` explaining how to use the theme and any other information of importance
+- Have a `screenshot.png` of the theme in action with a max size of around 2000x1000
 
-- We are creating a theme for [Zola](https://www.getzola.org/)
-- The sample content for the theme is in the `content/` directory
-- Any/all JavaScript should be Vanilla JS
-- We should use "Tailwind CSS" for any/all style and theme customizations
-- This site should be viewable on all modern desktop and mobile browsers
-
-## Zola
-
-- Enable the search index for use with `elasticlunr`. 
+## Zola Configuration
 - Single language (English)
-- `taxonomies` should be configured for "Tags" only
-- Enable an RSS 2.0 feed (`/rss.xml`)
-- Blog posts are created so that content (images, comments, etc...) can be colocated in a directory
+- Enable search index for `elasticlunr`
+- Disable Zola's Sass compilation for the theme
+- Configure `taxonomies` for "Tags" only
+- Enable RSS 2.0 feed (`/rss.xml`)
+- Sample content exists in the `content/` directory
+  - Blog posts are in the `content/posts` directory and allow content (images, comments, etc.) to be colocated in a directory
 
-## Description of Layout Elements
+## Layout Elements
 
-1. Header row
-   1. [Blog Owner Name]
-   2. Navigation
-      1. About (/about)
-      2. Blog (/post)
-      3. Categories (/tags)
-      4. Archive (/archive)
-   3. Search box
-      1. Should show results in an overlay that appears just under the search box.
-      2. The search results should happen real-time and with Enter/button press.
-      3. Highlighting terms in search result isn't required.
-   4. Light/Dark theme toggle
-2. Footer
-   1. Copyright (year) [Blog Owner Name]
-   2. Powered by Zola with link to https://www.getzola.org/
-   3. Theme by Devin.ai
-   4. Social Network Links for each configured social network, show the social network icon and link to uri.
-   5. rss icon linking to `/rss.xml`
+**Header Row**
+1. Blog Owner Name
+2. Navigation
+   - About (/about)
+   - Blog (/post)
+   - Categories (/tags)
+   - Archive (/archive)
+3. Search Box
+   - Overlay results under the search box
+   - Real-time results with Enter/button press
+   - Highlighting terms in search results not required
+4. Light/Dark Theme Toggle
+
+**Footer**
+1. Copyright (year) Blog Owner Name
+2. "Powered by Zola" link to https://www.getzola.org/
+3. "Theme by Devin.ai"
+4. Social Network Links (icons and URIs)
+5. RSS icon linking to `/rss.xml`
 
 ## Zola Theme Options
-
-- Blog Owner Name: The name of the person who blogs on this site
-- Blog Owner Image: The path/name of static image asset to be used for the blog owner
-- Blog Owner Description: Text used on the homepage
-- Social Links: an array of social network and uri. 
-  - This list should not be finite. 
-  - Ideally, the configured settings would allow for the name of the social nework to directly reference and render icons as provided from TailwindCSS
-  - Default enabled networks should be GitHub, StackOverflow, Twitter, LinkedIn
+- Blog Owner Name
+- Blog Owner Image (static image asset path/name)
+- Blog Owner Description (homepage text)
+- Social Links (array of social network and URI)
+  - Allow for dynamic addition
+  - Default networks: GitHub, StackOverflow, Twitter/X, LinkedIn
 
 ## Tailwind Theme
+- Support light and dark mode
+- Default color scheme and fonts
 
-- The theme should support light and dark mode.
-- Color scheme and fonts can be default
+## Zola Theme Templates
 
-## Description of Zola Theme Templates
+### index.html
+- sample url: `/`
+- Hero with:
+  - Blog Owner Name from `config.toml`
+  - Blog Owner Image from `config.toml`
+  - Description/About text from `config.toml`
+  - Social Network Links (icons and URIs)
+- Under the Hero, most recent 3 blog posts as "cards"
 
-### /archive
+### archive.html
+- sample url: `/archive`
+- List all years (descending)
+- List all post titles in each year with a link to the post.
+- No post counts, description or summaries required
 
-- The archive page should list all years (descending) and then a list of all post titles in that year.
-- No description or summary on this page.
-- post counts per year are not required.
+### post-list.html
+- sample url: `/post`
+- List blog posts within a section
+- Use Zola pagination (10 posts per page, `paginate_path` = "page")
+- Show title, `description` (or summary if `description` not present), and date
 
-### `index.html`
+### post.html
+- sample url: `/post/hello-world`
+- Renders blog post content from `content/post`. Example: `/content/post/2000-01-01-hello-world/index.md`
+- Render comments (if any) from `.yml` files colocated with `index.md`
+- Under comment, provide links to "Previous" and "Next" blog posts
 
-- The default document of the site. (i.e. the home page).
-- Should have a "Hero" that contains
--   the [Blog Owner Name] as configured in the `config.toml` file
--   the [Blog Owner Image] as configured in the `config.toml` file
--   description/about text as configured in the `config.toml` file.
--   Social Network Links for each configured social network, show the social network icon and link to uri.
-- Under the hero, should show the most recent 3 blog posts as "cards"
+### tags/list.html
+- Top of page: list all tags (link to `/tags/{tag-name}`)
+- Below: list each tag with associated posts
 
-### `post.html`
+### tags/single.html
+- List all blog posts in a tag
 
-- A page that renders a blog post under the `/post` section
-- At the bottom of the page, will have links to "Previous" and "Next" blog posts as provided via Zola
-- Underneath the previous/next links, render comments
-  - Comments may or may not exist. 
-  - Comments are `.yml` files colocated in the same directory as the `index.md` document of the blog post.
+### page.html
+- sample url: `/about`
+- General template for pages
+- Similar to `post.html` without comments/paging
 
-### `post-list.html`
+## Comments Structure
+- id: Monotonically increasing number
+- date: Comment date
+- name: Comment author
+- avatar: URI to author's image
+- message: Comment text
 
-- A page that lists out all blog posts in its section
-- The page should list the article title, any configured `description` in the post's front matter and the date of the post. If there isn't a configured `description` in the front matter, then it should render the page's summary.
-- The page should use Zola pagination. 10 posts per page. the `paginate_path` should be "page"
-
-### `tags/list.html`
-
-- On the top of the page all tags should be rendered out. Clicking on a specific tag will take you to `/tags/{tag-name}`
-- Underneath the listing of all tags, we should list out each tag and then a list of each post for that tag
-
-### `tags/single.html`
-
-- Should list all blog posts in that tag
-
-#### Comments Structure
-
-- id: A monotonically increasing number. Higher numbers are more recent than lower numbers.
-- date: the date the comment was made
-- name: The name of the comment author
-- avatar: a URI to an image for this user. This URI may be from various services. The template should render the image regardless of where it comes from.
-- message: single, or multiline, text of the comment.
-
-Assume the comments are validated prior to being created.
-
+Example:
 ```yml
 id: 635428042550000000
 date: 2014-08-05T02:57:35.0000000Z
@@ -108,8 +107,3 @@ name: Joe Coder
 avatar: http://www.gravatar.com/avatar/314826f5d569260f26ac9f26f9e38b8a.jpg?d=robohash
 message: I concur.
 ```
-
-### `page.html`
-
-- Used as a general template for pages
-- Should be similar to `post.html` but without any comments/paging
