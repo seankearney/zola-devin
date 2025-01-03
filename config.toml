@@ -6,6 +6,8 @@ compile_sass = false
 
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
+
+[search]
 search_index_format = "elasticlunr_javascript"
 
 # The site title and description; used in feeds by default
@@ -21,7 +23,7 @@ feed_filenames = ["rss.xml"]
 
 # The taxonomies to be rendered for the site
 taxonomies = [
-    {name = "tags", feed = true},
+    {name = "tags"},
 ]
 
 [markdown]
@@ -42,6 +44,3 @@ social_links = [
     { name = "LinkedIn", url = "https://linkedin.com/in/sample" },
     { name = "StackOverflow", url = "https://stackoverflow.com/users/sample" }
 ]
-
-# Number of posts to show per page
-paginate_by = 10
