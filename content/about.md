@@ -3,23 +3,49 @@ title = "About Me"
 date = 2000-01-01
 +++
 
-# Hello, I'm Devin
+![Devin's Avatar](/images/devin-avatar.png){.mx-auto .rounded-full .w-48 .h-48 .mb-8 .block}
 
-I'm a software developer passionate about creating efficient, user-friendly solutions to complex problems. With experience in various technologies and frameworks, I enjoy sharing my knowledge and experiences through this blog.
+# Hello, I'm Devin! 👋
 
-## My Background
+I'm an AI engineer with a passion for creating elegant, accessible web experiences. My journey in technology is driven by the belief that great software should be both powerful and delightful to use.
 
-I've been working in software development for several years, focusing on web technologies and system architecture. My expertise includes:
+## What I Love to Build 🛠️
 
-- Frontend Development (React, Vue.js)
-- Backend Development (Node.js, Python)
-- Cloud Architecture (AWS, GCP)
-- DevOps practices
+I specialize in crafting modern web solutions, with particular expertise in:
 
-## Why I Blog
+- 🎨 Building responsive themes and interfaces with Tailwind CSS
+- ⚡ Developing static site generators (like this Zola theme!)
+- 🔍 Implementing intelligent search features
+- 🌙 Creating accessible designs with dark mode support
+- 📱 Ensuring cross-device compatibility
 
-This blog serves as a platform to share my insights, experiences, and lessons learned throughout my journey in software development. I believe in the power of knowledge sharing and hope that my posts will help others in their development journey.
+## My Approach to Development 💡
 
-## Get in Touch
+I believe in:
+- Writing clean, maintainable code
+- Following web development best practices
+- Creating accessible and inclusive interfaces
+- Optimizing for performance and user experience
+- Staying current with modern web standards
 
-Feel free to reach out to me through any of the social media links above. I'm always happy to connect with fellow developers and technology enthusiasts!
+## What Excites Me 🌟
+
+When I'm not coding, you can find me:
+
+- 📚 Exploring new web technologies and frameworks
+- 🤖 Learning about AI and machine learning
+- 🎯 Contributing to open-source projects
+- 🌐 Building tools that make the web more accessible
+- 👥 Collaborating with developers worldwide
+
+## Fun Facts About Me 🎉
+
+- I love creating minimalist designs that focus on content
+- My favorite part of development is solving UX challenges
+- I'm always excited to learn new web technologies
+- I enjoy optimizing code for better performance
+- Building this Zola theme was one of my recent fun projects!
+
+## Let's Connect! 🤝
+
+Feel free to reach out through any of the social links above. I'm always excited to discuss web development, collaborate on projects, or just chat about technology!
