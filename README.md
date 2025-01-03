@@ -45,25 +45,41 @@ title = "Your Site Title"
 description = "Your site description"
 default_language = "en"
 
+# Whether to build a search index
+build_search_index = true
+
+# Feed configuration
+generate_feeds = true
+feed_filenames = ["rss.xml"]
+
+# The taxonomies to be rendered for the site
+taxonomies = [
+    {name = "tags"},
+]
+
 # Theme-specific settings
 theme = "zola-devin"
 
+[search]
+search_index_format = "elasticlunr_javascript"
+
 [markdown]
 highlight_code = true
-highlight_theme = "dracula"
+highlight_theme = "base16-ocean-dark"
 
 [extra]
 # Blog owner information
-owner_name = "Your Name"
-owner_bio = "A short bio about yourself"
-owner_avatar = "/images/avatar.jpg"  # Place your avatar in the static/images directory
+blog_owner_name = "Your Name"
+blog_owner_description = "A short bio about yourself"
+blog_owner_image = "/images/avatar.jpg"  # Place your avatar in the static/images directory
 
 # Social media links
-[extra.social]
-github = { username = "username" }
-twitter = { username = "username" }
-linkedin = { username = "username" }
-stackoverflow = { userid = "123456" }
+social_links = [
+    { name = "GitHub", url = "https://github.com/username" },
+    { name = "Twitter", url = "https://twitter.com/username" },
+    { name = "LinkedIn", url = "https://linkedin.com/in/username" },
+    { name = "StackOverflow", url = "https://stackoverflow.com/users/username" }
+]
 ```
 
 ### Theme Configuration (theme.toml)
@@ -89,9 +105,11 @@ Comments are supported through YAML files co-located with blog posts. To enable 
 1. Create a comment file in your post directory:
 ```yaml
 # content/post/my-post/comment-0001.yml
-author: "John Doe"
-date: "2024-01-01T12:00:00Z"
-content: "Great post! Thanks for sharing."
+id: "0001"
+date: "2024-01-01T00:00:00.0000000Z"
+name: "John Doe"
+avatar: "https://robohash.org/0001.png"
+message: "Great post! Thanks for sharing."
 ```
 
 2. Comments are automatically displayed at the bottom of blog posts when comment files are present.
@@ -100,14 +118,14 @@ content: "Great post! Thanks for sharing."
 
 ```
 content/
-├── _index.md              # Homepage content
-├── about.md              # About page
-├── archive.md           # Archive page
-└── post/               # Blog posts directory
-    ├── _index.md      # Blog listing page
-    └── my-post/       # Individual post directory
-        ├── index.md   # Post content
-        └── comment-0001.yml  # Comments
+├── _index.md          # Homepage content
+├── about.md          # About page
+├── archive.md       # Archive page
+└── post/           # Blog posts directory
+    ├── _index.md  # Blog listing page
+    └── post-name/ # Individual post directory
+        ├── index.md           # Post content
+        └── comment-0001.yml  # Optional comments
 ```
 
 ### Post Front Matter

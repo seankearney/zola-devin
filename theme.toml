@@ -1,7 +1,7 @@
 name = "zola-devin"
 description = "A modern Zola theme by Devin"
 license = "MIT"
-min_version = "0.17.0"
+min_version = "0.19.2"
 
 [author]
 name = "Devin"
@@ -9,7 +9,10 @@ homepage = "https://devin.ai"
 
 [extra]
 # Theme options that can be customized in config.toml
-blog_owner_name = "string"
-blog_owner_image = "string"
-blog_owner_description = "string"
-social_links = "array"
+blog_owner_name = "string"         # The name of the blog owner
+blog_owner_image = "string"        # Path to the blog owner's avatar image
+blog_owner_description = "string"  # A brief description or bio of the blog owner
+social_links = [                   # Array of social media links
+    { name = "string",            # Name of the social platform
+      url = "string" }            # Full URL to the social profile
+]
