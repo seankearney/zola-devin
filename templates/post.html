@@ -27,20 +27,20 @@
 
     {% if page.lower or page.higher %}
     <nav class="flex justify-between items-center py-8 border-t border-gray-200 dark:border-gray-700">
-        {% if page.lower %}
-        <a href="{{ page.lower.permalink }}" class="flex items-center text-blue-600 dark:text-blue-400 hover:underline">
+        {% if page.higher %}
+        <a href="{{ page.higher.permalink }}" class="flex items-center text-blue-600 dark:text-blue-400 hover:underline">
             <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
             </svg>
-            {{ page.lower.title }}
+            {{ page.higher.title }}
         </a>
         {% else %}
         <div></div>
         {% endif %}
 
-        {% if page.higher %}
-        <a href="{{ page.higher.permalink }}" class="flex items-center text-blue-600 dark:text-blue-400 hover:underline">
-            {{ page.higher.title }}
+        {% if page.lower %}
+        <a href="{{ page.lower.permalink }}" class="flex items-center text-blue-600 dark:text-blue-400 hover:underline">
+            {{ page.lower.title }}
             <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
