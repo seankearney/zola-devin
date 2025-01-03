@@ -1,7 +1,6 @@
 +++
 title = "Hello World"
 date = 2000-01-01
-description = "My first blog post introducing the purpose and goals of this blog"
 
 [taxonomies]
 tags = ["welcome", "introduction"]

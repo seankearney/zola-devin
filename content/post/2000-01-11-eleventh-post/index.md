@@ -1,7 +1,6 @@
 +++
 title = "Eleventh Test Post"
 date = 2000-01-11
-description = "This is an eleventh test post to verify pagination"
 [taxonomies]
 tags = ["test", "pagination"]
 +++
