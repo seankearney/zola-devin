@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (query.length >= 2) {
                 searchOverlay.classList.remove('hidden');
                 searchOverlay.classList.add('flex');
-    
+                performSearch(query);
             } else {
                 resultsContainer.innerHTML = '';
                 searchOverlay.classList.add('hidden');
