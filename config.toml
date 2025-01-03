@@ -15,8 +15,8 @@ description = "A modern blog built with Zola"
 default_language = "en"
 
 # Feed configuration
-generate_feed = true
-feed_filename = "rss.xml"
+generate_feeds = true
+feed_filenames = ["rss.xml"]
 
 # The taxonomies to be rendered for the site
 taxonomies = [
@@ -44,9 +44,3 @@ social_links = [
 
 # Number of posts to show per page
 paginate_by = 10
-
-# Section configuration
-[sections]
-# Section path relative to content directory
-post = { paginate_by = 10, sort_by = "date", sort_order = "desc" }
-archive = { paginate_by = 10, sort_by = "date", sort_order = "desc" }
