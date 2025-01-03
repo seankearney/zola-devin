@@ -2,14 +2,14 @@
 base_url = "http://127.0.0.1:1111"
 
 # Whether to automatically compile all Sass files in the sass directory
-compile_sass = true
+compile_sass = false
 
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
 
 # The site title and description; used in feeds by default
-title = "My Blog"
-description = "A simple blog built with Zola"
+title = "Devin's Blog"
+description = "A modern blog built with Zola"
 
 # The default language; used in feeds
 default_language = "en"
@@ -29,12 +29,17 @@ highlight_code = true
 highlight_theme = "base16-ocean-dark"
 
 [extra]
+# Blog owner configuration
+blog_owner_name = "Devin"
+blog_owner_image = "/images/devin-avatar.png"
+blog_owner_description = "An AI engineer passionate about building modern web experiences"
+
 # Social media links
 social_links = [
-    { name = "GitHub", url = "https://github.com/digitaldjpool" },
-    { name = "Twitter", url = "https://twitter.com/digitaldjpool" },
-    { name = "LinkedIn", url = "https://linkedin.com/company/digitaldjpool" },
-    { name = "StackOverflow", url = "https://stackoverflow.com/users/digitaldjpool" }
+    { name = "GitHub", url = "https://github.com/sample" },
+    { name = "Twitter", url = "https://twitter.com/sample" },
+    { name = "LinkedIn", url = "https://linkedin.com/in/sample" },
+    { name = "StackOverflow", url = "https://stackoverflow.com/users/sample" }
 ]
 
 # Number of posts to show per page

@@ -1,0 +1,15 @@
+name = "zola-devin"
+description = "A modern Zola theme by Devin"
+license = "MIT"
+min_version = "0.17.0"
+
+[author]
+name = "Devin"
+homepage = "https://devin.ai"
+
+[extra]
+# Theme options that can be customized in config.toml
+blog_owner_name = "string"
+blog_owner_image = "string"
+blog_owner_description = "string"
+social_links = "array"
