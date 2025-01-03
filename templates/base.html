@@ -17,8 +17,8 @@
     </script>
     <meta name="search-index" content="{{ get_url(path='search_index.en.js') }}">
     <link rel="stylesheet" href="{{ get_url(path='tailwind.css') }}">
-    <script src="{{ get_url(path='elasticlunr.min.js') }}"></script>
-    <script src="{{ get_url(path='search.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/elasticlunr/0.9.5/elasticlunr.min.js"></script>
+    <script src="{{ get_url(path='search.js') }}" defer></script>
     <script src="{{ get_url(path='theme.js') }}" defer></script>
     <script src="{{ get_url(path='mobile-menu.js') }}" defer></script>
     <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path='rss.xml') }}">
@@ -37,7 +37,9 @@
             </div>
             <div class="flex items-center space-x-4">
                 <div class="relative">
-                    <input type="search" class="search-input w-48 px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]" placeholder="Search..." aria-label="Search">
+                    <input id="search-input" type="search" class="w-48 px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]" placeholder="Type to search..." aria-label="Search">
+                    <div id="search-preview" class="absolute right-0 mt-2 w-96 max-w-screen-sm bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden z-50 hidden">
+                    </div>
                 </div>
                 <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700" aria-label="Toggle dark mode">
                     <svg width="20" height="20" fill="none" stroke="currentColor" class="text-[var(--color-text-primary)]" viewBox="0 0 24 24">
@@ -61,13 +63,15 @@
         </div>
     </header>
 
-    <div class="search-overlay fixed inset-0 bg-black bg-opacity-50 hidden z-50">
-        <div class="search-results bg-white dark:bg-gray-800 w-full max-w-3xl mx-auto mt-16 sm:mt-20 rounded-lg shadow-xl overflow-hidden">
+    <div id="search-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 transition-opacity duration-200 ease-in-out">
+        <div class="bg-white dark:bg-gray-800 w-full max-w-3xl mx-auto mt-16 sm:mt-20 rounded-lg shadow-xl overflow-hidden transform transition-transform duration-200">
             <div class="flex justify-between items-center p-4 border-b dark:border-gray-700">
                 <h2 class="text-lg font-semibold text-[var(--color-text-primary)]">Search Results</h2>
-                <button class="close-search text-2xl text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" aria-label="Close search">×</button>
+                <button id="close-search" class="text-2xl text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-full w-8 h-8 flex items-center justify-center transition-colors duration-150" aria-label="Close search">×</button>
             </div>
-            <div class="results-container max-h-[80vh] sm:max-h-[70vh] overflow-y-auto p-4"></div>
+            <div id="search-results" class="max-h-[80vh] sm:max-h-[70vh] overflow-y-auto p-4 space-y-4">
+                <!-- Search results will be dynamically inserted here -->
+            </div>
         </div>
     </div>
 

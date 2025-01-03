@@ -58,29 +58,12 @@ owner_name = "Your Name"
 owner_bio = "A short bio about yourself"
 owner_avatar = "/images/avatar.jpg"  # Place your avatar in the static/images directory
 
-# Navigation links
-[[extra.menu]]
-name = "About"
-url = "/about"
-
-[[extra.menu]]
-name = "Blog"
-url = "/post"
-
-[[extra.menu]]
-name = "Categories"
-url = "/tags"
-
-[[extra.menu]]
-name = "Archive"
-url = "/archive"
-
-# Social media links (username only)
+# Social media links
 [extra.social]
-github = "username"
-twitter = "username"
-linkedin = "username"
-stackoverflow = "userid"
+github = { username = "username" }
+twitter = { username = "username" }
+linkedin = { username = "username" }
+stackoverflow = { userid = "123456" }
 ```
 
 ### Theme Configuration (theme.toml)
@@ -143,22 +126,24 @@ tags = ["tag1", "tag2"]
 
 ## Building and Deployment
 
-1. Install dependencies:
+1. Install dependencies and build assets:
 ```bash
-# Install Tailwind CSS
+# Install dependencies
 npm install
 
-# Build Tailwind CSS
-npm run build
+# Build Tailwind CSS (in watch mode for development)
+npx tailwindcss -i ./static/input.css -o ./static/tailwind.css --watch
+
+# Or build once for production
+npx tailwindcss -i ./static/input.css -o ./static/tailwind.css
 ```
 
-2. Build your site:
+2. Build and serve your site:
 ```bash
+# Build for production
 zola build
-```
 
-3. Preview locally:
-```bash
+# Preview locally (available at http://127.0.0.1:1111)
 zola serve
 ```
 

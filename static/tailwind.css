@@ -1490,12 +1490,20 @@ input[type="checkbox"]:focus:is(.dark *) {
   position: fixed;
 }
 
+.absolute {
+  position: absolute;
+}
+
 .relative {
   position: relative;
 }
 
 .inset-0 {
   inset: 0px;
+}
+
+.right-0 {
+  right: 0px;
 }
 
 .top-0 {
@@ -1552,8 +1560,8 @@ input[type="checkbox"]:focus:is(.dark *) {
   margin-top: 4rem;
 }
 
-.mt-20 {
-  margin-top: 5rem;
+.mt-2 {
+  margin-top: 0.5rem;
 }
 
 .mt-4 {
@@ -1603,8 +1611,8 @@ input[type="checkbox"]:focus:is(.dark *) {
   height: 1.5rem;
 }
 
-.max-h-\[70vh\] {
-  max-height: 70vh;
+.max-h-\[80vh\] {
+  max-height: 80vh;
 }
 
 .min-h-screen {
@@ -1631,6 +1639,10 @@ input[type="checkbox"]:focus:is(.dark *) {
   width: 1.5rem;
 }
 
+.w-96 {
+  width: 24rem;
+}
+
 .w-full {
   width: 100%;
 }
@@ -1639,12 +1651,20 @@ input[type="checkbox"]:focus:is(.dark *) {
   max-width: 42rem;
 }
 
+.max-w-3xl {
+  max-width: 48rem;
+}
+
 .max-w-4xl {
   max-width: 56rem;
 }
 
 .max-w-none {
   max-width: none;
+}
+
+.max-w-screen-sm {
+  max-width: 640px;
 }
 
 .flex-shrink-0 {
@@ -2172,6 +2192,16 @@ input[type="checkbox"]:focus:is(.dark *) {
 .dark\:hover\:text-white:hover:is(.dark *) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+@media (min-width: 640px) {
+  .sm\:mt-20 {
+    margin-top: 5rem;
+  }
+
+  .sm\:max-h-\[70vh\] {
+    max-height: 70vh;
+  }
 }
 
 @media (min-width: 768px) {
