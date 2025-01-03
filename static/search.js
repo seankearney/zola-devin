@@ -28,12 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
             resultsContainer.innerHTML = '<p class="p-4 text-red-500">Failed to load search index</p>';
         });
 
-    // Show overlay when focusing on search input
-    searchInput.addEventListener('focus', () => {
-        searchOverlay.classList.remove('hidden');
-        searchOverlay.classList.add('flex');
-    });
-
     // Close overlay when clicking close button
     closeButton.addEventListener('click', () => {
         searchOverlay.classList.add('hidden');
@@ -58,11 +52,17 @@ document.addEventListener('DOMContentLoaded', function() {
         clearTimeout(debounceTimer);
         debounceTimer = setTimeout(() => {
             const query = searchInput.value.trim();
-            if (query.length < 2) {
+            // Only show overlay and perform search if we have 2 or more characters
+            if (query.length >= 2) {
+                searchOverlay.classList.remove('hidden');
+                searchOverlay.classList.add('flex');
+    
+            } else {
                 resultsContainer.innerHTML = '';
-                return;
+                searchOverlay.classList.add('hidden');
+                searchOverlay.classList.remove('flex');
             }
-            performSearch(query);
+
         }, 200); // Debounce for better performance
     });
 
@@ -80,12 +80,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            const resultsHtml = results.map(result => `
-                <a href="${result.ref}" class="block p-4 hover:bg-gray-50 dark:hover:bg-gray-800">
-                    <h3 class="text-lg font-semibold text-[var(--text-primary)]">${result.ref.split('/').pop()}</h3>
-                    <p class="text-sm text-gray-600 dark:text-gray-400">Score: ${result.score.toFixed(2)}</p>
-                </a>
-            `).join('');
+            const resultsHtml = results.map(result => {
+                // Extract title from URL: /post/my-post-title/ -> My Post Title
+                const urlPath = result.ref.split('/').filter(part => part);
+                const lastSegment = urlPath[urlPath.length - 1];
+                
+                // Try to find the matching link in the document to get its text content
+                const matchingLink = document.querySelector(`a[href$="${lastSegment}/"]`);
+                const title = matchingLink ? matchingLink.textContent : 
+                    lastSegment
+                        .split('-')
+                        .slice(1)  // Remove date if present
+                        .join(' ')
+                        .replace(/(^|\s)\S/g, letter => letter.toUpperCase());  // Capitalize words
+                
+                return `
+                    <a href="${result.ref}" class="block p-4 hover:bg-gray-50 dark:hover:bg-gray-800">
+                        <h3 class="text-lg font-semibold text-[var(--text-primary)]">${title}</h3>
+                    </a>
+                `;
+            }).join('');
 
             resultsContainer.innerHTML = resultsHtml;
         } catch (error) {

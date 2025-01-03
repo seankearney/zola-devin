@@ -2,14 +2,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const themeToggle = document.getElementById('theme-toggle');
     const html = document.documentElement;
     
-    // Check for saved theme preference, otherwise use system preference
+    // Check for saved theme preference, default to dark
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        html.classList.toggle('dark', savedTheme === 'dark');
+    if (!savedTheme) {
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
     } else {
-        // Check system preference
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        html.classList.toggle('dark', prefersDark);
+        html.classList.toggle('dark', savedTheme === 'dark');
     }
 
     // Update theme toggle button appearance
@@ -37,11 +36,5 @@ document.addEventListener('DOMContentLoaded', function() {
         updateToggleButton();
     });
 
-    // Listen for system theme changes
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-        if (!localStorage.getItem('theme')) {
-            html.classList.toggle('dark', e.matches);
-            updateToggleButton();
-        }
-    });
+    // No system theme detection to prevent flickering
 });

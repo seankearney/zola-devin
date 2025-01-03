@@ -1,35 +1,31 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="max-w-4xl mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold text-[var(--text-primary)] mb-8">Archive</h1>
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl mb-8">Archive</h1>
 
+    {% set post_section = get_section(path="post/_index.md") %}
     {% set years = [] %}
-    {% for page in section.pages %}
+    {% for page in post_section.pages %}
         {% set year = page.date | date(format="%Y") %}
         {% if year not in years %}
             {% set_global years = years | concat(with=year) %}
         {% endif %}
     {% endfor %}
 
-    <div class="space-y-8">
-        {% for year in years | sort | reverse %}
-        <section>
-            <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">{{ year }}</h2>
-            <ul class="space-y-2">
-                {% for page in section.pages %}
-                    {% if page.date | date(format="%Y") == year %}
-                    <li>
-                        <a href="{{ page.permalink }}" 
-                           class="text-[var(--text-primary)] hover:text-blue-600 dark:hover:text-blue-400">
-                            {{ page.title }}
-                        </a>
-                    </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        </section>
-        {% endfor %}
+    {% for year in years | sort | reverse %}
+    <div class="mb-8">
+        <h2 class="text-2xl mb-4">{{ year }}</h2>
+        <ul>
+            {% for page in post_section.pages %}
+                {% if page.date | date(format="%Y") == year %}
+                <li class="mb-2">
+                    <a href="{{ page.permalink }}">{{ page.title }}</a>
+                </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
     </div>
+    {% endfor %}
 </div>
 {% endblock content %}

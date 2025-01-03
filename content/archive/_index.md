@@ -1,4 +1,5 @@
 +++
 title = "Archives"
-date = 2000-01-01
+template = "archive.html"
+sort_by = "date"
 +++

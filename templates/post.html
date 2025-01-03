@@ -51,8 +51,12 @@
     </nav>
     {% endif %}
 
-    {% set page_dir = page.relative_path | trim_start_matches(pat="post/") | trim_end_matches(pat="/index.md") %}
-    {% set comments = load_data(path="content/post/" ~ page_dir ~ "/comment-*.yml", required=false) %}
+    {% set comments = [] %}
+    {% for asset in page.assets %}
+        {% if asset is matching("[.](yml)$") %}
+            {% set_global comments = comments | concat(with=[load_data(path=asset, format="yaml")]) %}
+        {% endif %}
+    {% endfor %}
     
     {% if comments %}
     <section class="mt-16">
