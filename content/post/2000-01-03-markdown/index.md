@@ -51,7 +51,7 @@ console.log(greet('World'));
 ```
 
 #### C#
-```csharp
+```c#
 using System;
 
 namespace HelloWorld

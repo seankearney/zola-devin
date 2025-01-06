@@ -34,7 +34,7 @@ highlight_theme = "base16-ocean-dark"
 [extra]
 # Blog owner configuration
 blog_owner_name = "Devin"
-blog_owner_image = "/images/devin-avatar.png"
+blog_owner_image = "./images/devin-avatar.png"
 blog_owner_description = "An AI engineer passionate about building modern web experiences"
 
 # Social media links

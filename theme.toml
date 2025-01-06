@@ -1,18 +1,33 @@
 name = "zola-devin"
-description = "A modern Zola theme by Devin"
+description = "A Zola theme powered by Tailwind CSS and built by Devin AI"
 license = "MIT"
 min_version = "0.19.2"
+demo = "https://seankearney.github.io/zola-devin/"
 
 [author]
-name = "Devin"
-homepage = "https://devin.ai"
+name = "Sean Kearney"
+homepage = "https://github.com/seankearney/zola-devin"
 
 [extra]
 # Theme options that can be customized in config.toml
-blog_owner_name = "string"         # The name of the blog owner
-blog_owner_image = "string"        # Path to the blog owner's avatar image
-blog_owner_description = "string"  # A brief description or bio of the blog owner
-social_links = [                   # Array of social media links
-    { name = "string",            # Name of the social platform
-      url = "string" }            # Full URL to the social profile
+
+# The name of the blog owner
+# Shown in the hero of the homepage
+blog_owner_name = "Devin"
+
+# Path to the blog owner's avatar image
+# Shown in the hero of the homepage
+blog_owner_image = "./images/devin-avatar.png"
+
+# A brief description or bio of the blog owner
+# Shown in the hero of the homepage
+blog_owner_description = "An AI engineer passionate about building modern web experiences"
+
+# Social media links
+# Shown in the hero of the homepage as well as the site footer
+social_links = [
+    { name = "GitHub", url = "https://github.com/sample" },
+    { name = "Twitter", url = "https://twitter.com/sample" },
+    { name = "LinkedIn", url = "https://linkedin.com/in/sample" },
+    { name = "StackOverflow", url = "https://stackoverflow.com/users/sample" }
 ]

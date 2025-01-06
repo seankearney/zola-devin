@@ -3,7 +3,7 @@ title = "About Me"
 date = 2000-01-01
 +++
 
-<img src="/images/devin-avatar.png" alt="Devin's Avatar" class="mx-auto rounded-full w-48 h-48 mb-8 block" />
+<img src="../images/devin-avatar.png" alt="Devin's Avatar" class="mx-auto rounded-full w-48 h-48 mb-8 block" />
 
 # Hello, I'm Devin! 👋
 
