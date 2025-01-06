@@ -27,12 +27,12 @@
     <header class="bg-white dark:bg-gray-800 shadow-md fixed w-full top-0 z-50">
         <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-6">
-                <a href="/" class="text-xl font-bold text-[var(--color-text-primary)]">{{ config.title }}</a>
+                <a href="{{ get_url(path='/') }}" class="text-xl font-bold text-[var(--color-text-primary)]">{{ config.title }}</a>
                 <div class="hidden md:flex space-x-4">
-                    <a href="/about" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]">About</a>
-                    <a href="/post" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]">Blog</a>
-                    <a href="/tags" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]">Categories</a>
-                    <a href="/archive" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]">Archive</a>
+                    <a href="{{ get_url(path='/about') }}" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]">About</a>
+                    <a href="{{ get_url(path='/post') }}" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]">Blog</a>
+                    <a href="{{ get_url(path='/tags') }}" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]">Categories</a>
+                    <a href="{{ get_url(path='/archive') }}" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]">Archive</a>
                 </div>
             </div>
             <div class="flex items-center space-x-4">
@@ -55,10 +55,10 @@
         </nav>
         <div class="mobile-menu hidden md:hidden bg-white dark:bg-gray-800 w-full border-t dark:border-gray-700">
             <div class="container mx-auto px-4 py-2 flex flex-col space-y-2">
-                <a href="/about" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] py-2">About</a>
-                <a href="/post" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] py-2">Blog</a>
-                <a href="/tags" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] py-2">Categories</a>
-                <a href="/archive" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] py-2">Archive</a>
+                <a href="{{ get_url(path='/about') }}" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] py-2">About</a>
+                <a href="{{ get_url(path='/post') }}" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] py-2">Blog</a>
+                <a href="{{ get_url(path='/tags') }}" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] py-2">Categories</a>
+                <a href="{{ get_url(path='/archive') }}" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] py-2">Archive</a>
             </div>
         </div>
     </header>
@@ -108,9 +108,9 @@
                     © {{ now() | date(format="%Y") }} {{ config.extra.blog_owner_name }}
                 </p>
                 <p class="text-gray-600 dark:text-gray-400">
-                    <a href="https://www.getzola.org/" class="hover:text-gray-900 dark:hover:text-white transition-colors">Powered by Zola</a>
-                    <span class="mx-2">•</span>
-                    <span>Theme by Devin.ai</span>
+                    Powered by <a href="https://www.getzola.org/" class="hover:text-gray-900 dark:hover:text-white transition-colors">Zola</a>
+                    &amp;
+                    <span><a href="https://github.com/seankearney/zola-devin" class="hover:text-gray-900 dark:hover:text-white transition-colors">Devin</a></span>
                 </p>
                 <a href="{{ get_url(path='rss.xml') }}" 
                    class="inline-block text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
