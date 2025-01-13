@@ -1,6 +1,8 @@
 # Zola Devin Theme
 
-A modern, responsive theme for Zola static site generator featuring Tailwind CSS, dark mode support, and vanilla JavaScript. Perfect for blogs and personal websites.
+A modern, responsive theme for Zola static site generator featuring Tailwind CSS, dark mode support, and vanilla JavaScript. Perfect for blogs and personal websites. 
+
+Demo Site: [https://seankearney.github.io/zola-devin/](https://seankearney.github.io/zola-devin/)
 
 ## Features
 
@@ -25,7 +27,7 @@ cd mysite
 
 2. Clone this repository into your themes directory:
 ```bash
-git clone https://github.com/digitaldjpool/devin-uitest.git themes/zola-devin
+git clone https://github.com/seankearney/zola-devin.git themes/zola-devin
 ```
 
 3. Enable the theme in your `config.toml`:
@@ -90,12 +92,12 @@ The theme includes a `theme.toml` with default settings:
 name = "zola-devin"
 description = "A modern blog theme for Zola with Tailwind CSS"
 license = "MIT"
-homepage = "https://github.com/digitaldjpool/devin-uitest"
+homepage = "https://github.com/seankearney/zola-devin"
 min_version = "0.17.0"
 
 [author]
 name = "Devin"
-homepage = "https://devin.ai"
+homepage = "https://seankearney.github.io/zola-devin/"
 ```
 
 ### Enabling Comments
@@ -118,13 +120,13 @@ message: "Great post! Thanks for sharing."
 
 ```
 content/
-├── _index.md          # Homepage content
-├── about.md          # About page
-├── archive.md       # Archive page
-└── post/           # Blog posts directory
-    ├── _index.md  # Blog listing page
-    └── post-name/ # Individual post directory
-        ├── index.md           # Post content
+├── _index.md                 # Homepage content
+├── about.md                  # About page
+├── archive.md                # Archive page
+└── post/                     # Blog posts directory
+    ├── _index.md             # Blog listing page
+    └── post-name/            # Individual post directory
+        ├── index.md          # Post content
         └── comment-0001.yml  # Optional comments
 ```
 
