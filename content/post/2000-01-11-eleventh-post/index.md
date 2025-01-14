@@ -1,6 +1,10 @@
 +++
 title = "Eleventh Test Post"
 date = 2000-01-11
+
+[extra]
+promo_image = "promo-image-11.jpg"
+
 [taxonomies]
 tags = ["test", "pagination"]
 +++
