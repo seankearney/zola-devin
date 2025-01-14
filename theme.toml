@@ -31,3 +31,6 @@ social_links = [
     { name = "LinkedIn", url = "https://linkedin.com/in/sample" },
     { name = "StackOverflow", url = "https://stackoverflow.com/users/sample" }
 ]
+
+# Google Analytics / GTag id - Place your tag id here to enable Google Analytics
+google_analytics_gtag_id = ""

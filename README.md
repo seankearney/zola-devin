@@ -82,22 +82,10 @@ social_links = [
     { name = "LinkedIn", url = "https://linkedin.com/in/username" },
     { name = "StackOverflow", url = "https://stackoverflow.com/users/username" }
 ]
-```
 
-### Theme Configuration (theme.toml)
+# Google Analytics / GTag id - Place your tag id here to enable Google Analytics
+google_analytics_gtag_id = "{your-tag-here-id}"
 
-The theme includes a `theme.toml` with default settings:
-
-```toml
-name = "zola-devin"
-description = "A modern blog theme for Zola with Tailwind CSS"
-license = "MIT"
-homepage = "https://github.com/seankearney/zola-devin"
-min_version = "0.17.0"
-
-[author]
-name = "Devin"
-homepage = "https://seankearney.github.io/zola-devin/"
 ```
 
 ### Enabling Comments
@@ -127,6 +115,7 @@ content/
     ├── _index.md             # Blog listing page
     └── post-name/            # Individual post directory
         ├── index.md          # Post content
+        ├── promo-image.png   # Optional promotional image
         └── comment-0001.yml  # Optional comments
 ```
 
@@ -139,6 +128,10 @@ Use this front matter in your post's `index.md`:
 title = "My Post Title"
 date = 2024-01-01
 description = "A brief description of the post"
+
+[extra]
+promo_image = "promo-image.png" # An optional path, of a colocated image, to show on the homepage
+
 [taxonomies]
 tags = ["tag1", "tag2"]
 +++
