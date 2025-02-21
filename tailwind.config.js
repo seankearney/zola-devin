@@ -38,6 +38,12 @@ module.exports = {
               color: 'rgb(15 23 42)', // slate-900
               fontWeight: '600',
             },
+            'code::before': {
+              content: 'normal',
+            },
+            'code::after': {
+              content: 'normal',
+            },
             code: {
               color: 'rgb(15 23 42)', // slate-900
               backgroundColor: 'rgb(241 245 249)', // slate-100
