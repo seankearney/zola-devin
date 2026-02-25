@@ -53,14 +53,9 @@
             <article class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105">
                 {% if page.extra.promo_image %}
 
-                {% set path = page.extra.promo_image %}
-                {% if path is starting_with("./") %}
-                    {% set relative_path = page.relative_path | split(pat="/") | slice(end=-1) | join(sep="/") %}
-                    {% set img_path = path | trim_start_matches(pat="./") %}
-                    {% set img_path = relative_path ~ "/" ~ img_path %}
-                {% else %}
-                    {% set img_path = page.path ~ page.extra.promo_image | as_str %}    
-                {% endif %}
+                {% set relative_path = page.relative_path | split(pat="/") | slice(end=-1) | join(sep="/") %}
+                {% set img_path = page.extra.promo_image | trim_start_matches(pat="./") %}
+                {% set img_path = relative_path ~ "/" ~ img_path %}
                 {% set image = resize_image(path=img_path, width=470, op="fit_width", format="webp") %}
                 <div class="relative h-48 overflow-hidden">
                     <img src="{{image.url}}" 

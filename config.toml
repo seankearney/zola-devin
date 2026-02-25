@@ -26,10 +26,8 @@ taxonomies = [
 [search]
 search_index_format = "elasticlunr_javascript"
 
-[markdown]
-# Whether to do syntax highlighting
-highlight_code = true
-highlight_theme = "base16-ocean-dark"
+[markdown.highlighting]
+theme = "nord"
 
 [extra]
 # Blog owner configuration
