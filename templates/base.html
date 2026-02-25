@@ -40,27 +40,27 @@
     <header class="bg-white dark:bg-gray-800 shadow-md fixed w-full top-0 z-50">
         <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-6">
-                <a href="{{ get_url(path='/') }}" class="text-xl font-bold text-[var(--color-text-primary)]">{{ config.title }}</a>
+                <a href="{{ get_url(path='/') }}" class="text-xl font-bold text-slate-900 dark:text-white">{{ config.title }}</a>
                 <div class="hidden md:flex space-x-4">
-                    <a href="{{ get_url(path='/about') }}" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]">About</a>
-                    <a href="{{ get_url(path='/post') }}" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]">Blog</a>
-                    <a href="{{ get_url(path='/tags') }}" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]">Categories</a>
-                    <a href="{{ get_url(path='/archive') }}" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)]">Archive</a>
+                    <a href="{{ get_url(path='/about') }}" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400">About</a>
+                    <a href="{{ get_url(path='/post') }}" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400">Blog</a>
+                    <a href="{{ get_url(path='/tags') }}" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400">Categories</a>
+                    <a href="{{ get_url(path='/archive') }}" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400">Archive</a>
                 </div>
             </div>
             <div class="flex items-center space-x-4">
                 <div class="relative">
-                    <input id="search-input" type="search" class="w-48 px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-[var(--color-text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]" placeholder="Type to search..." aria-label="Search">
+                    <input id="search-input" type="search" class="w-48 px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Type to search..." aria-label="Search">
                     <div id="search-preview" class="absolute right-0 mt-2 w-96 max-w-screen-sm bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden z-50 hidden">
                     </div>
                 </div>
                 <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700" aria-label="Toggle dark mode">
-                    <svg width="20" height="20" fill="none" stroke="currentColor" class="text-[var(--color-text-primary)]" viewBox="0 0 24 24">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" class="text-slate-900 dark:text-white" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
                     </svg>
                 </button>
                 <button class="mobile-menu-button md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700" aria-label="Menu">
-                    <svg width="24" height="24" fill="none" stroke="currentColor" class="text-[var(--color-text-primary)]" viewBox="0 0 24 24">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" class="text-slate-900 dark:text-white" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
@@ -68,10 +68,10 @@
         </nav>
         <div class="mobile-menu hidden md:hidden bg-white dark:bg-gray-800 w-full border-t dark:border-gray-700">
             <div class="container mx-auto px-4 py-2 flex flex-col space-y-2">
-                <a href="{{ get_url(path='/about') }}" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] py-2">About</a>
-                <a href="{{ get_url(path='/post') }}" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] py-2">Blog</a>
-                <a href="{{ get_url(path='/tags') }}" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] py-2">Categories</a>
-                <a href="{{ get_url(path='/archive') }}" class="text-[var(--color-text-secondary)] hover:text-[var(--color-primary)] py-2">Archive</a>
+                <a href="{{ get_url(path='/about') }}" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 py-2">About</a>
+                <a href="{{ get_url(path='/post') }}" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 py-2">Blog</a>
+                <a href="{{ get_url(path='/tags') }}" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 py-2">Categories</a>
+                <a href="{{ get_url(path='/archive') }}" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 py-2">Archive</a>
             </div>
         </div>
     </header>
@@ -79,7 +79,7 @@
     <div id="search-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 transition-opacity duration-200 ease-in-out">
         <div class="bg-white dark:bg-gray-800 w-full max-w-3xl mx-auto mt-16 sm:mt-20 rounded-lg shadow-xl overflow-hidden transform transition-transform duration-200">
             <div class="flex justify-between items-center p-4 border-b dark:border-gray-700">
-                <h2 class="text-lg font-semibold text-[var(--color-text-primary)]">Search Results</h2>
+                <h2 class="text-lg font-semibold text-slate-900 dark:text-white">Search Results</h2>
                 <button id="close-search" class="text-2xl text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-full w-8 h-8 flex items-center justify-center transition-colors duration-150" aria-label="Close search">×</button>
             </div>
             <div id="search-results" class="max-h-[80vh] sm:max-h-[70vh] overflow-y-auto p-4 space-y-4">
