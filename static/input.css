@@ -4,12 +4,12 @@
 
 @layer base {
   /* Apply color transitions only to elements that change color during theme switching */
-  body,
+  body, header, footer, nav, main, section, article, div, span,
   h1, h2, h3, h4, h5, h6,
-  p, a, pre, code, blockquote, hr, sup, del,
+  p, a, pre, code, blockquote, hr, sup, del, time,
   th, td, tbody tr,
   ul, ol,
-  input[type="checkbox"],
+  button, input,
   .btn-primary, .btn-secondary, .nav-link, .card, .footnote {
     @apply transition-colors duration-200;
   }
