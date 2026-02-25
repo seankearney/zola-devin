@@ -2,13 +2,13 @@
 
 {% block content %}
 <div class="max-w-4xl mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold text-[var(--text-primary)] mb-8">Tags</h1>
+    <h1 class="text-4xl font-bold text-slate-900 dark:text-white mb-8">Tags</h1>
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {% for term in terms %}
         <a href="{{ term.permalink }}" 
            class="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-            <h2 class="text-xl font-semibold text-[var(--text-primary)]">{{ term.name }}</h2>
+            <h2 class="text-xl font-semibold text-slate-900 dark:text-white">{{ term.name }}</h2>
             <span class="text-sm text-gray-500 dark:text-gray-400">{{ term.pages | length }} posts</span>
         </a>
         {% endfor %}

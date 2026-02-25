@@ -1949,18 +1949,6 @@ input[type="checkbox"]:focus:is(.dark *) {
   font-weight: 600;
 }
 
-.text-\[var\(--color-text-primary\)\] {
-  color: var(--color-text-primary);
-}
-
-.text-\[var\(--color-text-secondary\)\] {
-  color: var(--color-text-secondary);
-}
-
-.text-\[var\(--text-primary\)\] {
-  color: var(--text-primary);
-}
-
 .text-blue-600 {
   --tw-text-opacity: 1;
   color: rgb(37 99 235 / var(--tw-text-opacity, 1));
@@ -1989,6 +1977,16 @@ input[type="checkbox"]:focus:is(.dark *) {
 .text-gray-900 {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity, 1));
+}
+
+.text-slate-600 {
+  --tw-text-opacity: 1;
+  color: rgb(71 85 105 / var(--tw-text-opacity, 1));
+}
+
+.text-slate-900 {
+  --tw-text-opacity: 1;
+  color: rgb(15 23 42 / var(--tw-text-opacity, 1));
 }
 
 .shadow-lg {
@@ -2134,10 +2132,6 @@ pre.giallo code,
   background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1));
 }
 
-.hover\:text-\[var\(--color-primary\)\]:hover {
-  color: var(--color-primary);
-}
-
 .hover\:text-blue-600:hover {
   --tw-text-opacity: 1;
   color: rgb(37 99 235 / var(--tw-text-opacity, 1));
@@ -2168,8 +2162,9 @@ pre.giallo code,
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
-.focus\:ring-\[var\(--color-primary\)\]:focus {
-  --tw-ring-color: var(--color-primary);
+.focus\:ring-blue-600:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(37 99 235 / var(--tw-ring-opacity, 1));
 }
 
 .group:hover .group-hover\:scale-105 {
@@ -2226,6 +2221,11 @@ pre.giallo code,
 .dark\:text-gray-600:is(.dark *) {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity, 1));
+}
+
+.dark\:text-slate-400:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(148 163 184 / var(--tw-text-opacity, 1));
 }
 
 .dark\:text-white:is(.dark *) {
