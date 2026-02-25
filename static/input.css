@@ -47,16 +47,8 @@
     @apply bg-slate-100 dark:bg-slate-800 rounded-lg p-4 mb-4 overflow-x-auto border border-slate-200 dark:border-slate-700;
   }
 
-  pre.giallo {
-    @apply bg-none border-none;
-  }
-
   code {
     @apply bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono text-slate-800 dark:text-slate-200;
-  }
-
-  pre.giallo code {
-    @apply bg-transparent text-inherit p-0;
   }
 
   blockquote {
@@ -132,4 +124,14 @@
   .footnote {
     @apply text-sm text-slate-500 dark:text-slate-400 mt-8 pt-4 border-t border-slate-200 dark:border-slate-700;
   }
+}
+
+/* Syntax highlighting: reset code inside Giallo blocks so the
+   pre's inline background-color from the theme shows through */
+pre.giallo code,
+.prose pre.giallo code,
+.prose-invert pre.giallo code {
+  background-color: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
 }

@@ -2043,6 +2043,17 @@ input[type="checkbox"]:focus:is(.dark *) {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Syntax highlighting: reset code inside Giallo blocks so the
+   pre's inline background-color from the theme shows through */
+
+pre.giallo code,
+.prose pre.giallo code,
+.prose-invert pre.giallo code {
+  background-color: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
+}
+
 .dark\:prose-invert:is(.dark *) {
   --tw-prose-body: var(--tw-prose-invert-body);
   --tw-prose-headings: var(--tw-prose-invert-headings);
