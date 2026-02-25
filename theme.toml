@@ -1,7 +1,7 @@
 name = "zola-devin"
 description = "A Zola theme powered by Tailwind CSS and built by Devin AI"
 license = "MIT"
-min_version = "0.19.2"
+min_version = "0.22.1"
 demo = "https://seankearney.github.io/zola-devin/"
 
 [author]

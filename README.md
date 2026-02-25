@@ -65,9 +65,8 @@ theme = "zola-devin"
 [search]
 search_index_format = "elasticlunr_javascript"
 
-[markdown]
-highlight_code = true
-highlight_theme = "base16-ocean-dark"
+[markdown.highlighting]
+theme = "nord"
 
 [extra]
 # Blog owner information
