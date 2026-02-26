@@ -33,6 +33,7 @@ There are no tests or linting commands configured.
 
 ## Key Conventions
 
+- **`static/tailwind.css` must be committed.** This is a Zola theme — end users install it as a git submodule and run `zola build` without Node.js. The compiled Tailwind CSS must be checked in so it ships with the theme. Any PR that adds or changes Tailwind utility classes in templates or `input.css` must include a rebuilt `tailwind.css` (`npx tailwindcss -i ./static/input.css -o ./static/tailwind.css`).
 - Post front matter uses TOML with `[extra]` and `[taxonomies]` sections
 - Comments are stored as YAML files colocated with the post, not in a database
 - Dark mode is the default; toggled via class on `<html>` element
