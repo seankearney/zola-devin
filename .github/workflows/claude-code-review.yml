@@ -11,6 +11,41 @@ on:
     #   - "src/**/*.jsx"
 
 jobs:
+  zola-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Zola
+        run: |
+          curl -sL https://github.com/getzola/zola/releases/download/v0.22.1/zola-v0.22.1-x86_64-unknown-linux-gnu.tar.gz | tar xz
+          sudo mv zola /usr/local/bin/
+
+      - name: Build site
+        run: zola build
+
+  tailwind-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Rebuild Tailwind CSS
+        run: npx tailwindcss -i ./static/input.css -o ./static/tailwind.css
+
+      - name: Check tailwind.css is up to date
+        run: git diff --exit-code static/tailwind.css
+
   claude-review:
     # Optional: Filter by PR author
     # if: |
