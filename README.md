@@ -25,7 +25,12 @@ zola init mysite
 cd mysite
 ```
 
-2. Clone this repository into your themes directory:
+2. Add this repository as a git submodule (recommended — keeps the theme pinned to a specific commit and makes upgrades trackable):
+```bash
+git submodule add https://github.com/seankearney/zola-devin.git themes/zola-devin
+```
+
+Alternatively, clone the repository if you do not need version pinning:
 ```bash
 git clone https://github.com/seankearney/zola-devin.git themes/zola-devin
 ```
@@ -34,6 +39,26 @@ git clone https://github.com/seankearney/zola-devin.git themes/zola-devin
 ```toml
 theme = "zola-devin"
 ```
+
+## Upgrading
+
+If you installed the theme as a git submodule (recommended), update it to the latest commit:
+
+```bash
+git submodule update --remote themes/zola-devin
+git add themes/zola-devin
+git commit -m "Update zola-devin theme"
+```
+
+If you installed the theme using `git clone` (no version pinning), pull the latest changes:
+
+```bash
+cd themes/zola-devin
+git pull origin main
+cd ../..
+```
+
+After upgrading, rebuild your site with `zola build` to pick up the changes.
 
 ## Configuration
 
