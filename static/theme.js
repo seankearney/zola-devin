@@ -2,15 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const themeToggle = document.getElementById('theme-toggle');
     const html = document.documentElement;
     
-    // Check for saved theme preference, default to dark
-    const savedTheme = localStorage.getItem('theme');
-    if (!savedTheme) {
-        html.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
-    } else {
-        html.classList.toggle('dark', savedTheme === 'dark');
-    }
-
     // Update theme toggle button appearance
     function updateToggleButton() {
         const isDark = html.classList.contains('dark');
