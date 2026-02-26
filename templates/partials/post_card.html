@@ -1,0 +1,25 @@
+<article class="border-b border-gray-200 dark:border-gray-700 pb-8 last:border-0">
+    <h2 class="text-2xl font-bold mb-4">
+        <a href="{{ page.permalink }}" class="text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400">
+            {{ page.title }}
+        </a>
+    </h2>
+    {% if page.description %}
+    <p class="text-gray-600 dark:text-gray-400 mb-4">{{ page.description }}</p>
+    {% elif page.summary %}
+    <p class="text-gray-600 dark:text-gray-400 mb-4">{{ page.summary | safe }}</p>
+    {% endif %}
+    <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
+        <time datetime="{{ page.date }}">{{ page.date | date(format="%B %d, %Y") }}</time>
+        {% if page.taxonomies.tags %}
+        <span class="mx-2">•</span>
+        <div class="flex items-center space-x-2">
+            {% for tag in page.taxonomies.tags %}
+            <a href="{{ get_taxonomy_url(kind='tags', name=tag) }}" 
+               class="text-blue-600 dark:text-blue-400 hover:underline">{{ tag }}</a>
+            {% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</article>
