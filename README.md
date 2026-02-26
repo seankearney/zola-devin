@@ -35,6 +35,24 @@ git clone https://github.com/seankearney/zola-devin.git themes/zola-devin
 theme = "zola-devin"
 ```
 
+## Upgrading
+
+If you installed the theme using `git clone` (recommended), pull the latest changes:
+
+```bash
+cd themes/zola-devin
+git pull origin main
+cd ../..
+```
+
+If you installed the theme as a git submodule:
+
+```bash
+git submodule update --remote themes/zola-devin
+```
+
+After upgrading, rebuild your site with `zola build` to pick up the changes.
+
 ## Configuration
 
 ### Required Configuration
