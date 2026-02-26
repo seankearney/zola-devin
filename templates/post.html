@@ -68,7 +68,7 @@
                     <img src="{{ comment.avatar }}" 
                          alt="Avatar of {{ comment.name }}"
                          class="w-12 h-12 rounded-full"
-                         onerror="this.src='https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp'">
+                         onerror="this.onerror=null;this.src='/images/default-avatar.svg'">
                 </div>
                 <div class="flex-grow">
                     <div class="flex items-center justify-between mb-2">
