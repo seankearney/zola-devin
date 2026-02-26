@@ -58,10 +58,9 @@
             <div class="flex items-center space-x-6">
                 <a href="{{ get_url(path='/') }}" class="text-xl font-bold text-slate-900 dark:text-white">{{ config.title }}</a>
                 <div class="hidden md:flex space-x-4">
-                    <a href="{{ get_url(path='/about') }}" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400">About</a>
-                    <a href="{{ get_url(path='/post') }}" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400">Blog</a>
-                    <a href="{{ get_url(path='/tags') }}" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400">Categories</a>
-                    <a href="{{ get_url(path='/archive') }}" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400">Archive</a>
+                    {% for link in config.extra.nav_links %}
+                    <a href="{{ get_url(path=link.url) }}" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400">{{ link.name }}</a>
+                    {% endfor %}
                 </div>
             </div>
             <div class="flex items-center space-x-4">
@@ -84,10 +83,9 @@
         </nav>
         <div class="mobile-menu hidden md:hidden bg-white dark:bg-gray-800 w-full border-t dark:border-gray-700">
             <div class="container mx-auto px-4 py-2 flex flex-col space-y-2">
-                <a href="{{ get_url(path='/about') }}" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 py-2">About</a>
-                <a href="{{ get_url(path='/post') }}" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 py-2">Blog</a>
-                <a href="{{ get_url(path='/tags') }}" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 py-2">Categories</a>
-                <a href="{{ get_url(path='/archive') }}" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 py-2">Archive</a>
+                {% for link in config.extra.nav_links %}
+                <a href="{{ get_url(path=link.url) }}" class="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 py-2">{{ link.name }}</a>
+                {% endfor %}
             </div>
         </div>
     </header>

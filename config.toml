@@ -43,5 +43,13 @@ social_links = [
     { name = "StackOverflow", url = "https://stackoverflow.com/users/sample" }
 ]
 
+# Navigation links shown in the header (desktop and mobile menus)
+nav_links = [
+    { name = "About", url = "/about" },
+    { name = "Blog", url = "/post" },
+    { name = "Categories", url = "/tags" },
+    { name = "Archive", url = "/archive" },
+]
+
 # Google Analytics / GTag id - Place your tag id here to enable Google Analytics
 google_analytics_gtag_id = ""

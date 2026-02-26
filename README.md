@@ -99,6 +99,14 @@ blog_owner_name = "Your Name"
 blog_owner_description = "A short bio about yourself"
 blog_owner_image = "/images/avatar.jpg"  # Place your avatar in the static/images directory
 
+# Navigation links shown in the header (desktop and mobile menus)
+nav_links = [
+    { name = "About", url = "/about" },
+    { name = "Blog", url = "/post" },
+    { name = "Categories", url = "/tags" },
+    { name = "Archive", url = "/archive" },
+]
+
 # Social media links
 social_links = [
     { name = "GitHub", url = "https://github.com/username" },
