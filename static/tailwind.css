@@ -554,7 +554,15 @@ video {
   display: none;
 }
 
-* {
+/* Apply color transitions only to elements that change color during theme switching */
+
+body, header, footer, nav, main, section, article, div, span,
+  h1, h2, h3, h4, h5, h6,
+  p, a, pre, code, blockquote, hr, sup, del, time,
+  th, td, tbody tr,
+  ul, ol,
+  button, input,
+  .btn-primary, .btn-secondary, .nav-link, .card, .footnote {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 200ms;
