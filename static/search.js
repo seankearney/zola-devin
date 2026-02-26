@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             .replace(/(^|\s)\S/g, letter => letter.toUpperCase())
                     };
                 });
-                console.log('Search index loaded and initialized successfully');
             } else {
                 throw new Error('Search index not found');
             }
