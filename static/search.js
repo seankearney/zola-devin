@@ -184,7 +184,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         
                         // Highlight search terms
                         searchTerms.forEach(term => {
-                            const regex = new RegExp(`(${term})`, 'gi');
+                            const escaped = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                            const regex = new RegExp(`(${escaped})`, 'gi');
                             snippet = snippet.replace(regex, '<mark class="bg-yellow-200 dark:bg-yellow-800">$1</mark>');
                         });
                         
