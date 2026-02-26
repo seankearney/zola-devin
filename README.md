@@ -49,6 +49,8 @@ If you installed the theme as a git submodule:
 
 ```bash
 git submodule update --remote themes/zola-devin
+git add themes/zola-devin
+git commit -m "Update zola-devin theme"
 ```
 
 After upgrading, rebuild your site with `zola build` to pick up the changes.
