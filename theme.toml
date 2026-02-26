@@ -17,7 +17,7 @@ blog_owner_name = "Devin"
 
 # Path to the blog owner's avatar image
 # Shown in the hero of the homepage
-blog_owner_image = "./images/devin-avatar.png"
+blog_owner_image = "images/devin-avatar.png"
 
 # A brief description or bio of the blog owner
 # Shown in the hero of the homepage
