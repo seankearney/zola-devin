@@ -16,18 +16,23 @@
     {% endif %}
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ config.title }}</title>
-    <meta name="description" content="{% if page.description %}{{ page.description }}{% elif section.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}">
+    {% set meta_title = page.title ~ " | " ~ config.title if page.title else config.title %}
+    {% set meta_description = page.description if page.description else (section.description if section.description else config.description) %}
+    {% set_global og_image = "" %}
+    {% if page.extra.promo_image %}{% set promo_filename = page.extra.promo_image | trim_start_matches(pat="./") %}{% set_global og_image = page.permalink ~ promo_filename %}{% endif %}
+    <title>{{ meta_title }}</title>
+    <meta name="description" content="{{ meta_description }}">
     <!-- Open Graph / Social Meta Tags -->
-    <meta property="og:type" content="{% if page %}article{% else %}website{% endif %}">
-    <meta property="og:url" content="{% if page.permalink %}{{ page.permalink }}{% elif section.permalink %}{{ section.permalink }}{% else %}{{ config.base_url }}{% endif %}">
-    <meta property="og:title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ config.title }}">
-    <meta property="og:description" content="{% if page.description %}{{ page.description }}{% elif section.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}">
-    {% if page.extra.promo_image %}{% set og_image = page.permalink ~ (page.extra.promo_image | trim_start_matches(pat="./")) %}<meta property="og:image" content="{{ og_image }}">{% endif %}
-    <meta name="twitter:card" content="{% if page.extra.promo_image %}summary_large_image{% else %}summary{% endif %}">
-    <meta name="twitter:title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ config.title }}">
-    <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% elif section.description %}{{ section.description }}{% else %}{{ config.description }}{% endif %}">
-    {% if page.extra.promo_image %}<meta name="twitter:image" content="{{ page.permalink }}{{ page.extra.promo_image | trim_start_matches(pat="./") }}">{% endif %}
+    <meta property="og:type" content="{{ "article" if page else "website" }}">
+    <meta property="og:url" content="{{ page.permalink if page.permalink else (section.permalink if section.permalink else config.base_url) }}">
+    <meta property="og:site_name" content="{{ config.title }}">
+    <meta property="og:title" content="{{ meta_title }}">
+    <meta property="og:description" content="{{ meta_description }}">
+    {% if og_image %}<meta property="og:image" content="{{ og_image }}">{% endif %}
+    <meta name="twitter:card" content="{{ "summary_large_image" if og_image else "summary" }}">
+    <meta name="twitter:title" content="{{ meta_title }}">
+    <meta name="twitter:description" content="{{ meta_description }}">
+    {% if og_image %}<meta name="twitter:image" content="{{ og_image }}">{% endif %}
     <script>
         (function() {
             var savedTheme = localStorage.getItem('theme');
