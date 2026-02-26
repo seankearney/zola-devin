@@ -105,6 +105,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 10);
     }
 
+    // Escape HTML special characters to prevent XSS
+    function escapeHtml(str) {
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
+    }
+
     // Perform search and display results
     function performSearch(query) {
         if (!searchIdx) {
@@ -191,10 +201,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Format the title based on the URL and document type
                 const formatTitle = (doc) => {
-                    if (doc.title) return doc.title;
+                    if (doc.title) return escapeHtml(doc.title);
                     if (doc.url === '/about/') return 'About Me - Developer Profile';
-                    return doc.url.split('/').pop().split('-').slice(1).join(' ')
-                        .replace(/(^|\s)\S/g, letter => letter.toUpperCase());
+                    return escapeHtml(doc.url.split('/').pop().split('-').slice(1).join(' ')
+                        .replace(/(^|\s)\S/g, letter => letter.toUpperCase()));
                 };
 
                 // Format the content preview
@@ -202,13 +212,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (snippet) return snippet;
                     if (doc.body) {
                         const cleanBody = doc.body.replace(/\s+/g, ' ').trim();
-                        return cleanBody.length > 200 ? cleanBody.slice(0, 200) + '...' : cleanBody;
+                        const truncated = cleanBody.length > 200 ? cleanBody.slice(0, 200) + '...' : cleanBody;
+                        return escapeHtml(truncated);
                     }
                     return 'No preview available';
                 };
 
+                const safeUrl = escapeHtml(doc.url);
                 return `<div class="search-result ${resultType} mb-4">
-                    <a href="${doc.url}" class="block p-4 hover:bg-gray-50 dark:hover:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg transition duration-150">
+                    <a href="${safeUrl}" class="block p-4 hover:bg-gray-50 dark:hover:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg transition duration-150">
                         <h3 class="text-lg font-semibold text-blue-600 dark:text-blue-400 hover:underline mb-2">
                             ${formatTitle(doc)}
                         </h3>
@@ -217,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 ${formatPreview(doc, snippet)}
                             </p>
                             <p class="text-xs text-gray-500 dark:text-gray-500">
-                                ${doc.url.replace(/^\/|\/$/g, '') || 'Home'}
+                                ${escapeHtml(doc.url.replace(/^\/|\/$/g, '')) || 'Home'}
                             </p>
                         </div>
                     </a>
