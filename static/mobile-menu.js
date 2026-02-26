@@ -7,9 +7,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isHidden) {
             mobileMenu.classList.remove('hidden');
             mobileMenu.classList.add('flex');
+            menuButton.setAttribute('aria-expanded', 'true');
         } else {
             mobileMenu.classList.add('hidden');
             mobileMenu.classList.remove('flex');
+            menuButton.setAttribute('aria-expanded', 'false');
         }
     });
 });
