@@ -16,20 +16,20 @@
     {% endif %}
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% set meta_title = page.title ~ " | " ~ config.title if page.title else config.title %}
-    {% set meta_description = page.description if page.description else (section.description if section.description else config.description) %}
+    {% if page.title %}{% set meta_title = page.title ~ " | " ~ config.title %}{% else %}{% set meta_title = config.title %}{% endif %}
+    {% if page.description %}{% set meta_description = page.description %}{% elif section.description %}{% set meta_description = section.description %}{% else %}{% set meta_description = config.description %}{% endif %}
     {% set_global og_image = "" %}
     {% if page.extra.promo_image %}{% set promo_filename = page.extra.promo_image | trim_start_matches(pat="./") %}{% set_global og_image = page.permalink ~ promo_filename %}{% endif %}
     <title>{{ meta_title }}</title>
     <meta name="description" content="{{ meta_description }}">
     <!-- Open Graph / Social Meta Tags -->
-    <meta property="og:type" content="{{ "article" if page else "website" }}">
-    <meta property="og:url" content="{{ page.permalink if page.permalink else (section.permalink if section.permalink else config.base_url) }}">
+    {% if page %}<meta property="og:type" content="article">{% else %}<meta property="og:type" content="website">{% endif %}
+    {% if page.permalink %}<meta property="og:url" content="{{ page.permalink }}">{% elif section.permalink %}<meta property="og:url" content="{{ section.permalink }}">{% else %}<meta property="og:url" content="{{ config.base_url }}">{% endif %}
     <meta property="og:site_name" content="{{ config.title }}">
     <meta property="og:title" content="{{ meta_title }}">
     <meta property="og:description" content="{{ meta_description }}">
     {% if og_image %}<meta property="og:image" content="{{ og_image }}">{% endif %}
-    <meta name="twitter:card" content="{{ "summary_large_image" if og_image else "summary" }}">
+    {% if og_image %}<meta name="twitter:card" content="summary_large_image">{% else %}<meta name="twitter:card" content="summary">{% endif %}
     <meta name="twitter:title" content="{{ meta_title }}">
     <meta name="twitter:description" content="{{ meta_description }}">
     {% if og_image %}<meta name="twitter:image" content="{{ og_image }}">{% endif %}
