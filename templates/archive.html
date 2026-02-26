@@ -5,27 +5,26 @@
     <h1 class="text-3xl mb-8">Archive</h1>
 
     {% set post_section = get_section(path="post/_index.md") %}
-    {% set years = [] %}
+    {% set current_year = "" %}
     {% for page in post_section.pages %}
         {% set year = page.date | date(format="%Y") %}
-        {% if year not in years %}
-            {% set_global years = years | concat(with=year) %}
+        {% if year != current_year %}
+            {% if current_year != "" %}
+            </ul>
+        </div>
+            {% endif %}
+        <div class="mb-8">
+            <h2 class="text-2xl mb-4">{{ year }}</h2>
+            <ul>
+            {% set_global current_year = year %}
         {% endif %}
+            <li class="mb-2">
+                <a href="{{ page.permalink }}">{{ page.title }}</a>
+            </li>
     {% endfor %}
-
-    {% for year in years | sort | reverse %}
-    <div class="mb-8">
-        <h2 class="text-2xl mb-4">{{ year }}</h2>
-        <ul>
-            {% for page in post_section.pages %}
-                {% if page.date | date(format="%Y") == year %}
-                <li class="mb-2">
-                    <a href="{{ page.permalink }}">{{ page.title }}</a>
-                </li>
-                {% endif %}
-            {% endfor %}
-        </ul>
-    </div>
-    {% endfor %}
+    {% if current_year != "" %}
+            </ul>
+        </div>
+    {% endif %}
 </div>
 {% endblock content %}
