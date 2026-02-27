@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchPreview = document.getElementById('search-preview');
     const resultsContainer = document.getElementById('search-results');
     const closeButton = document.getElementById('close-search');
+    const mobileSearchButton = document.getElementById('mobile-search-button');
+    const modalSearchInput = document.getElementById('modal-search-input');
 
     // Load the search index
     const searchIndexPath = document.querySelector('meta[name="search-index"]').getAttribute('content');
@@ -40,10 +42,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Close results when clicking outside
     document.addEventListener('click', (e) => {
-        if (!e.target.closest('#search-input') && !e.target.closest('#search-preview') && !e.target.closest('#search-modal')) {
+        if (!e.target.closest('#search-input') && !e.target.closest('#search-preview') && !e.target.closest('#search-modal') && !e.target.closest('#mobile-search-button')) {
             searchModal.classList.add('hidden');
             searchPreview.classList.add('hidden');
             searchInput.value = '';
+            modalSearchInput.value = '';
             resultsContainer.innerHTML = '';
         }
     });
@@ -76,6 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.key === 'Escape') {
             searchModal.classList.add('hidden');
             searchInput.value = '';
+            modalSearchInput.value = '';
             resultsContainer.innerHTML = '';
         }
     });
@@ -83,7 +87,31 @@ document.addEventListener('DOMContentLoaded', function() {
     closeButton.addEventListener('click', () => {
         searchModal.classList.add('hidden');
         searchInput.value = '';
+        modalSearchInput.value = '';
         resultsContainer.innerHTML = '';
+    });
+
+    // Open search modal from mobile search icon button
+    mobileSearchButton.addEventListener('click', () => {
+        searchModal.classList.remove('hidden');
+        modalSearchInput.focus();
+    });
+
+    // Real-time search from modal search input (mobile)
+    modalSearchInput.addEventListener('input', () => {
+        const query = modalSearchInput.value.trim();
+
+        if (query.length < 2) {
+            resultsContainer.innerHTML = '';
+            return;
+        }
+
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+            if (searchIdx) {
+                performSearch(query);
+            }
+        }, 300);
     });
 
     // Only show modal when typing starts, not on focus

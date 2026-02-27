@@ -64,11 +64,16 @@
                 </div>
             </div>
             <div class="flex items-center space-x-4">
-                <div class="relative">
+                <div class="relative hidden md:block">
                     <input id="search-input" type="search" class="w-48 px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Type to search..." aria-label="Search">
                     <div id="search-preview" class="absolute right-0 mt-2 w-96 max-w-screen-sm bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden z-50 hidden">
                     </div>
                 </div>
+                <button id="mobile-search-button" class="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700" aria-label="Search">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" class="text-slate-900 dark:text-white" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </button>
                 <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700" aria-label="Toggle dark mode">
                     <svg width="20" height="20" fill="none" stroke="currentColor" class="text-slate-900 dark:text-white" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
@@ -95,6 +100,9 @@
             <div class="flex justify-between items-center p-4 border-b dark:border-gray-700">
                 <h2 class="text-lg font-semibold text-slate-900 dark:text-white">Search Results</h2>
                 <button id="close-search" class="text-2xl text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 rounded-full w-8 h-8 flex items-center justify-center transition-colors duration-150" aria-label="Close search">×</button>
+            </div>
+            <div class="p-4 border-b dark:border-gray-700 md:hidden">
+                <input id="modal-search-input" type="search" class="w-full px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Type to search..." aria-label="Search">
             </div>
             <div id="search-results" class="max-h-[80vh] sm:max-h-[70vh] overflow-y-auto p-4 space-y-4">
                 <!-- Search results will be dynamically inserted here -->
