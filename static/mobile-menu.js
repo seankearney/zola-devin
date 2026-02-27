@@ -35,4 +35,12 @@ document.addEventListener('DOMContentLoaded', function() {
             closeMenu();
         }
     });
+
+    // Close menu on Escape key for keyboard accessibility
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+            closeMenu();
+            menuButton.focus();
+        }
+    });
 });
