@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchPreview = document.getElementById('search-preview');
     const resultsContainer = document.getElementById('search-results');
     const closeButton = document.getElementById('close-search');
+    const mobileSearchButton = document.getElementById('mobile-search-button');
+    const modalSearchInput = document.getElementById('modal-search-input');
 
     // Load the search index
     const searchIndexPath = document.querySelector('meta[name="search-index"]').getAttribute('content');
@@ -38,13 +40,26 @@ document.addEventListener('DOMContentLoaded', function() {
             resultsContainer.innerHTML = '<p class="p-4 text-red-500">Failed to load search index</p>';
         });
 
+    // Track whether the modal was opened via the mobile search button
+    let openedByMobileButton = false;
+
+    function closeSearchModal() {
+        searchModal.classList.add('hidden');
+        searchPreview.classList.add('hidden');
+        searchInput.value = '';
+        modalSearchInput.value = '';
+        resultsContainer.innerHTML = '';
+        mobileSearchButton.setAttribute('aria-expanded', 'false');
+        if (openedByMobileButton) {
+            openedByMobileButton = false;
+            mobileSearchButton.focus();
+        }
+    }
+
     // Close results when clicking outside
     document.addEventListener('click', (e) => {
-        if (!e.target.closest('#search-input') && !e.target.closest('#search-preview') && !e.target.closest('#search-modal')) {
-            searchModal.classList.add('hidden');
-            searchPreview.classList.add('hidden');
-            searchInput.value = '';
-            resultsContainer.innerHTML = '';
+        if (!e.target.closest('#search-input') && !e.target.closest('#search-preview') && !e.target.closest('#search-modal') && !e.target.closest('#mobile-search-button')) {
+            closeSearchModal();
         }
     });
 
@@ -74,16 +89,37 @@ document.addEventListener('DOMContentLoaded', function() {
     // Close modal when pressing Escape or clicking close button
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            searchModal.classList.add('hidden');
-            searchInput.value = '';
-            resultsContainer.innerHTML = '';
+            closeSearchModal();
         }
     });
 
     closeButton.addEventListener('click', () => {
-        searchModal.classList.add('hidden');
-        searchInput.value = '';
-        resultsContainer.innerHTML = '';
+        closeSearchModal();
+    });
+
+    // Open search modal from mobile search icon button
+    mobileSearchButton.addEventListener('click', () => {
+        openedByMobileButton = true;
+        mobileSearchButton.setAttribute('aria-expanded', 'true');
+        searchModal.classList.remove('hidden');
+        modalSearchInput.focus();
+    });
+
+    // Real-time search from modal search input (mobile)
+    modalSearchInput.addEventListener('input', () => {
+        const query = modalSearchInput.value.trim();
+
+        if (query.length < 2) {
+            resultsContainer.innerHTML = '';
+            return;
+        }
+
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+            if (searchIdx) {
+                performSearch(query);
+            }
+        }, 300);
     });
 
     // Only show modal when typing starts, not on focus
