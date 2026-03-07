@@ -22,6 +22,10 @@
     {% if page.extra.promo_image %}{% set promo_filename = page.extra.promo_image | trim_start_matches(pat="./") %}{% set_global og_image = page.permalink ~ promo_filename %}{% endif %}
     <title>{{ meta_title }}</title>
     <meta name="description" content="{{ meta_description }}">
+    {% if page.permalink %}<link rel="canonical" href="{{ page.permalink }}">
+    {% elif section.permalink %}<link rel="canonical" href="{{ section.permalink }}">
+    {% else %}<link rel="canonical" href="{{ config.base_url }}">
+    {% endif %}
     <!-- Open Graph / Social Meta Tags -->
     {% if page %}<meta property="og:type" content="article">{% else %}<meta property="og:type" content="website">{% endif %}
     {% if page.permalink %}<meta property="og:url" content="{{ page.permalink }}">{% elif section.permalink %}<meta property="og:url" content="{{ section.permalink }}">{% else %}<meta property="og:url" content="{{ config.base_url }}">{% endif %}
