@@ -1,0 +1,5 @@
+id: 0003
+date: 2000-01-03T08:00:00.0000000Z
+name: Anonymous Reader
+avatar: https://www.gravatar.com/avatar/00000000000000000000000000000000?d=404
+message: Testing the avatar fallback — my avatar URL is intentionally broken.
